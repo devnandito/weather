@@ -1,0 +1,120 @@
+{% load static %}
+
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <li class="active">
+        <a href="{% url 'users:dashboard' %}">
+          <i class="fa fa-home"></i>
+          <span>Inicio</span>
+        </a>
+      </li>
+      {% if request.user.profile.level.id == 1 %}
+      <li class="treeview">
+        <a href="">
+          <i class="fa fa-list-ul"></i>
+          <span>Cuentas</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="{% url 'users:show' %}">
+              <i class="fa fa-circle-o"></i>
+              <span>Usuarios</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'users:showprofile' %}">
+              <i class="fa fa-circle-o"></i>
+              <span>Perfiles</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'levels:show' %}">
+              <i class="fa fa-circle-o"></i>
+              <span>Niveles</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'users:met' %}">
+              <i class="fa fa-circle-o"></i>
+              <span>Agregar Meteorólogo</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'users:showmet' %}">
+              <i class="fa fa-circle-o"></i>
+              <span>Enviar Credenciales</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="{% url 'cities:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Ciudades</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'locations:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Ubicacion</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'stations:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Estaciones</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'stationtypes:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Tipo Estaciones</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'departments:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Departamentos</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'climatologies:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Climatologia</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'audits:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Auditorias</span>
+        </a>
+      </li>
+      {% endif %}
+      <!-- End if -->
+      {% if request.user.profile.level.id == 1 or request.user.profile.level.id == 2 %}
+      <li>
+        <a href="{% url 'forecasts:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Pronosticos</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'forecasts:predict' %}">
+          <i class="fa fa-th"></i>
+          <span>Tormentas</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'geoapps:show' %}">
+          <i class="fa fa-th"></i>
+          <span>Mapas</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </section>
+</aside>

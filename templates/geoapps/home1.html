@@ -1,0 +1,88 @@
+
+{% extends "basehome1.html" %}
+{% load static %}
+
+<!--add format forms-->
+{% load widget_tweaks %}
+
+<!-- Begin title-->
+{%block title %}
+	{{ title.home }}
+{% endblock %}
+<!-- End title-->
+
+<!-- Begin css-->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/photogallery.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/forecast.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <br>
+  <div class="photo-gallery">
+    <div class="column">
+      <div class="photo-item">
+        <div class="weather-date-location">
+          <h3 id="day"></h3>
+          <p class="text-gray">
+            <span id="month" class="weather-date"></span>
+            <span id="city" class="weather-location"></span>
+          </p>
+        </div>
+        <div class="weather-data">
+          <h4 id="temp" class="display-3">
+            <span class="symbol">&deg;</span>
+          </h4>
+          <p id="description"></p>
+          <div id="icon"></div>
+        </div>
+      </div>
+      <div class="photo-item">
+        <div id="item" class="weakly-weather"></div>
+      </div>
+      <div class="photo-item">
+      </div>
+    </div>
+    <div class="column">
+      <div class="photho-item">
+        <div style="width: 100%;">
+          {{ my_map|safe }}
+        </div>
+      </div>
+      <br>
+      <div class="photo-item">
+        <form id="search" action="">
+          <div class="sel">
+            <select name="combobox1" id="combocity">
+              <option value="Select">Estacion</option>
+            </select>
+            <select name="combobox3" id="comboyear">
+              <option value="Select">Año</option>
+            </select>
+            <select name="combobox2" id="combomonth">
+              <option value="Select">Mes</option>
+            </select>
+            <button class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+      <div class="photo-item">
+        <canvas id="histogram" width="700" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Core map svg -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+<!-- map customs -->
+<script src="{% static 'js/animation.forecast.js' %}"></script>
+<script src="{% static 'js/animation.histogram.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,182 @@
+<!--add base template-->
+{% extends "base.html" %}
+
+<!--Add extras-->
+{% load changes_extras %}
+
+<!--add format forms-->
+{% load widget_tweaks %}
+
+<!--load statics files-->
+{% load static %}
+
+<!--load humanize -->
+{% load humanize %}
+
+<!-- Begin title-->
+{%block title %}
+{{ title.home }}
+{% endblock %}
+<!-- End title-->
+
+<!-- Begin css-->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/forecast.css' %}" />
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock %}
+<!-- End css-->
+{% block content %}
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      {{ title.home }}
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="#"><i class="fa fa-dashboard"></i> Tablero</a>
+      </li>
+      <li class="active">{{ title.home }}</li>
+    </ol>
+  </section>
+
+
+  <section class="content">
+  <div class="row">
+    <div class="col-lg-6 col-xs-6">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <div class="card-body">
+            <div class="weather-date-location">
+              <h3 id="day"></h3>
+              <p class="text-gray">
+                <span id="month" class="weather-date"></span>
+                <span id="city" class="weather-location"></span>
+              </p>
+            </div>
+            <div class="weather-data d-flex">
+              <div class="mr-auto">
+                <h4 id="temp" class="display-3">
+                  <span class="symbol">&deg;</span>
+                </h4>
+                <p id="description"></p>
+                <div id="icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <!-- <div id="item" class="d-flex weakly-weather">
+          </div> -->
+        </div>
+        <div class="icon">
+          <ion-icon class="icon ion-cloud"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-xs-6">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <div class="card-body">
+            <div id="item" class="d-flex weakly-weather"></div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <!-- <div id="item" class="d-flex weakly-weather">
+          </div> -->
+        </div>
+        <div class="icon">
+          <ion-icon class="icon ion-cloud"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Historicos</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              
+            </div>
+            <div class="col-md-4">
+              <div class="chart-responsive">
+                <!-- <canvas id="pieChart" height="150"></canvas> -->
+                <form id="search" action="">
+                  <select name="combobox1" id="combocity">
+                    <option value="Select">Estacion</option>
+                  </select>
+                  <select name="combobox3" id="comboyear">
+                    <option value="Select">Año</option>
+                  </select>
+                  <select name="combobox2" id="combomonth">
+                    <option value="Select">Mes</option>
+                  </select>
+                  <button class="btn btn-primary">Enviar</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <canvas id="histogram" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <!-- <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Historicos</h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-8">
+              <canvas id="histogram" width="400" height="400"></canvas>
+            </div>
+            <div class="col-md-4">
+              <div class="chart-responsive">
+                <canvas id="pieChart" height="150"></canvas>
+                <form id="search" action="">
+                  <select name="combobox1" id="combocity">
+                    <option value="Select">Estacion</option>
+                  </select>
+                  <select name="combobox3" id="comboyear">
+                    <option value="Select">Año</option>
+                  </select>
+                  <select name="combobox2" id="combomonth">
+                    <option value="Select">Mes</option>
+                  </select>
+                  <button class="btn btn-primary">Enviar</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="col-lg-2">
+
+    </div>
+  </section>
+</div>
+{% endblock %}
+<!--Begin js-->
+{% block javascript %}
+<script src="{% static 'jquery/jquery.slim.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core map svg -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+<script src="{% static 'js/animation.forecast.js' %}"></script>
+<script src="{% static 'js/animation.histogram.js' %}"></script>
+{% endblock %}

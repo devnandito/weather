@@ -1,0 +1,32 @@
+{% load static %}
+<section>
+  <nav class="bg-navbar">
+      <div class="navbar-fixed">
+          <div class="container">
+              <div class="nav-wrapper">
+                  <a href="{% url 'geoapps:home' %}" class="brand-logo logo">Weather Arasunu</a>
+                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                  <ul class="right hide-on-med-and-down menu">
+                      {% if request.user.is_authenticated %}
+                          <li><a href="#"><i class="material-icons left">person</i>Hola, {{request.user}}</a></li>
+                          <li><a href="{# % url 'logoutUser' % #}"><i class="material-icons left">directions_walk</i>Cerrar</a></li>
+                      {% else %}
+                          <li><a href="{% url 'pages:register' %}"><i class="material-icons left">person_add</i>Resgistrese</a></li>
+                          <li><a href="{% url 'pages:login' %}"><i class="material-icons left">perm_identity</i>Iniciar sesión</a></li>
+                      {% endif %}
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </nav>
+      <ul class="sidenav side-menu" id="mobile-demo">
+          <p class="logo center logo-side">Weather Arasunu</p>
+          {% if request.user.is_authenticated %}
+              <li><a href="#"><i class="small material-icons left white-text">person</i>Hola, {{request.user}}</a></li>
+              <li><a href="{# % url 'logoutUser' % #}"><i class="small material-icons left white-text">directions_walk</i>Cerrar</a></li>
+          {% else %}
+              <li><a href="{# % url 'registerUser' % #}"><i class="material-icons left white-text">person_add</i>Resgistrese</a></li>
+              <li><a href="{# % url 'loginUser' % #}"><i class="material-icons left white-text">perm_identity</i>Iniciar sesión</a></li>
+          {% endif %}
+      </ul>
+</section>

@@ -1,0 +1,51 @@
+{% load static %}
+<!--add format forms-->
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="SP">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- materialize css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- css -->
+    <title>{%block title %} {% endblock %}</title>
+    {% block css %} {% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <section>
+        <nav class="bg-navbar">
+            <div class="navbar-fixed">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="{% url 'geoapps:home' %}" class="brand-logo logo">Weather Arasunu</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down menu">
+                            <li><a href="{% url 'pages:register' %}"><i class="material-icons left">person_add</i>Resgistrese</a></li>
+                            <li><a href="{% url 'pages:login' %}"><i class="material-icons left">perm_identity</i>Iniciar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+            <ul class="sidenav side-menu" id="mobile-demo">
+                <p class="logo center logo-side">Weather Arasunu</p>
+                <li><a href="{# % url 'registerUser' % #}"><i class="material-icons left white-text">person_add</i>Resgistrese</a></li>
+                <li><a href="{# % url 'loginUser' % #}"><i class="material-icons left white-text">perm_identity</i>Iniciar sesión</a></li>
+            </ul>
+    </section>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <!-- footer -->
+    <footer class="footer bg-footer center">
+        <p class="flow-text footer-text white-text">Arasunu &copy; 2022</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% block javascript %} {% endblock %}
+</body>
+</html>

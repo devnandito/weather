@@ -1,0 +1,9 @@
+.weakly-weather {
+  display: flex;
+  gap: 20px;
+}
+
+.weakly-weather-item {
+  flex-direction: column;
+  gap: 10px;
+}

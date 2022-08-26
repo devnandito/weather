@@ -1,0 +1,64 @@
+
+{% extends "baselogin.html" %}
+{% load static %}
+
+<!--add format forms-->
+{% load widget_tweaks %}
+
+<!-- Begin title-->
+{%block title %}
+	{{ title.login }}
+{% endblock %}
+<!-- End title-->
+
+<!-- Begin css-->
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row card-row">
+        <div class="col l6 offset-l3">
+            <div class="card white card-login">
+                <div class="card-content">
+                    <h1 class="center title">Iniciar sesión</h1>
+                    <div class="row">
+						<form action="" method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="input-field col l12">
+									<i class="material-icons prefix">account_circle</i>
+									{% render_field form.username id="icon-prefix" class="validate" %}
+									{{ form.options.errors }}
+									<label for="icon-prefix" class="label-user">Usuario</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col l12">
+									<i class="material-icons prefix">lock_outline</i>
+									{% render_field form.password id="icon-lock" class="validate" %}
+									{{ form.options.errors }}
+									<label for="icon-lock" class="label-pass">Contraseña</label>
+								</div>
+								<div class ="center" style="color:red"> {{ text }} </div>
+								<div class="center">
+									<div class="row">
+										<button type="submit" class="col s10 offset-s1
+										center waves-effect waves-light
+										btn-large btn-login">Iniciar
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+						<a href="{% url 'password_reset' %}" class="forgot-pass">Olvido su password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+select {
+    display: block;
+    flex-direction: column;
+}
+
+.sel {
+    display: flex;
+}
+
+.weakly-weather {
+    display: flex;
+    gap: 20px;
+}
+
+.weakly-weather-item {
+    flex-direction: column;
+    gap: 10px;
+}
